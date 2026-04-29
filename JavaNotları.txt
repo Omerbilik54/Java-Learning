@@ -1,0 +1,9 @@
+İnstance = Nesne 
+Java'da Texbox diye birşey var . Ve işimizi çok kolaylaştırıyor .
+
+String siir =
+    ***
+    Benim adım Ömer
+    ***
+
+Bu şekilde üç yıldızın arasına istediğin şeyi yazabiliyorsun .
