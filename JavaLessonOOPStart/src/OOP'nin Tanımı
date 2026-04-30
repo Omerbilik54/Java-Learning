@@ -1,0 +1,205 @@
+                                             ☕ Java’da OOP (Nesne Yönelimli Programlama) Nedir?
+
+                                             OOP (Object-Oriented Programming) yani Nesne Yönelimli Programlama,
+                                             programı nesneler (object) ve sınıflar (class) etrafında tasarlamayı amaçlayan bir programlama yaklaşımıdır.
+
+                                             Java tamamen OOP mantığıyla yazılmıştır.
+                                             Her şey bir nesnedir.
+
+                                             🎯 OOP’nin Amacı
+
+                                             Gerçek dünyayı kod dünyasına benzetmek.
+
+                                             Kodun düzenli, tekrar kullanılabilir, bakımı kolay olmasını sağlamak.
+
+                                             Büyük projelerde karmaşıklığı azaltmak.
+
+                                             🧱 1. Class (Sınıf) Nedir?
+
+                                             Bir class, bir nesnenin şablonudur (planıdır).
+
+                                             ➡️ Gerçek hayattan örnek:
+                                             Diyelim bir “Araba” sınıfımız var.
+                                             Bu sınıfta her arabanın ortak özellikleri tanımlanır:
+
+                                             class Araba {
+                                                 String marka;
+                                                 String renk;
+                                                 int hiz;
+
+                                                 void hizlan() {
+                                                     System.out.println("Araba hızlanıyor!");
+                                                 }
+                                             }
+
+
+                                             Yani class dediğimiz şey bir şablon (template).
+                                             Ama gerçek araba değildir; sadece arabaların nasıl olacağını anlatır.
+
+                                             🚗 2. Object (Nesne) Nedir?
+
+                                             Bir object (nesne), bir class’tan üretilmiş gerçek örnektir.
+
+                                             Araba bmw = new Araba();
+                                             bmw.marka = "BMW";
+                                             bmw.renk = "Siyah";
+                                             bmw.hiz = 200;
+                                             bmw.hizlan();
+
+
+                                             Burada bmw bir nesnedir.
+                                             Araba sınıfından üretilmiştir.
+
+                                             💡 Kısaca:
+                                             class = plan
+                                             object = o plandan üretilen şey
+
+                                             🔑 3. OOP’nin 4 Temel Prensibi
+
+                                             Java’daki OOP sisteminin 4 ana ayağı vardır:
+
+                                             🔸 1. Encapsulation (Kapsülleme)
+
+                                             Bir nesnenin verilerini dış dünyadan gizleme işlemidir.
+                                             Yani değişkenleri koruma altına alırız.
+
+                                             class Araba {
+                                                 private int hiz;  // sadece sınıf içinde erişilebilir
+
+                                                 public void setHiz(int yeniHiz) {
+                                                     if (yeniHiz >= 0)
+                                                         hiz = yeniHiz;
+                                                 }
+
+                                                 public int getHiz() {
+                                                     return hiz;
+                                                 }
+                                             }
+
+
+                                             Bu sayede dışarıdan direkt araba.hiz = -10 yazılamaz, çünkü hiz gizlenmiştir.
+                                             👉 Veriyi sadece “kontrollü” şekilde değiştirebilirsin.
+
+                                             🔸 2. Inheritance (Kalıtım)
+
+                                             Bir sınıfın özelliklerini başka bir sınıfa aktarmasıdır.
+                                             Kod tekrarını önler.
+
+                                             class Arac {
+                                                 int tekerSayisi;
+                                                 void hareketEt() { System.out.println("Araç hareket ediyor"); }
+                                             }
+
+                                             class Araba extends Arac {
+                                                 String marka;
+                                             }
+
+
+                                             Burada Araba, Arac sınıfından türedi.
+                                             Yani Araba sınıfı tekerSayisi ve hareketEt() metoduna otomatik olarak sahiptir.
+
+                                             💡 “extends” kalıtım anahtar kelimesidir.
+
+                                             🔸 3. Polymorphism (Çok Biçimlilik)
+
+                                             Bir metodu farklı şekillerde kullanabilmektir.
+                                             Yani aynı isimli metot farklı davranabilir.
+
+                                             Örnek 1 — Overloading (Aşırı yükleme)
+                                             class Hesap {
+                                                 int topla(int a, int b) { return a + b; }
+                                                 double topla(double a, double b) { return a + b; }
+                                             }
+
+
+                                             Aynı isim (topla) ama farklı parametreler → farklı davranış
+
+                                             Örnek 2 — Overriding (Geçersiz kılma)
+                                             class Hayvan {
+                                                 void sesCikar() { System.out.println("Hayvan ses çıkarıyor"); }
+                                             }
+
+                                             class Kedi extends Hayvan {
+                                                 void sesCikar() { System.out.println("Miyav!"); }
+                                             }
+
+
+                                             Burada alt sınıf (Kedi), üst sınıftaki metodu kendine göre yeniden tanımladı.
+
+                                             🔸 4. Abstraction (Soyutlama)
+
+                                             Karmaşık sistemleri basitleştirir.
+                                             Yani sadece “gerekli olanı göster, detayları gizle.”
+
+                                             abstract class Sekil {
+                                                 abstract void alanHesapla(); // soyut metot
+                                             }
+
+                                             class Daire extends Sekil {
+                                                 void alanHesapla() { System.out.println("π * r * r"); }
+                                             }
+
+
+                                             Burada Sekil sınıfı soyut.
+                                             Kendisi direkt nesne üretmez ama alt sınıflarına bir şablon sunar.
+
+                                             ⚙️ 4. Diğer OOP Kavramları
+                                             🔹 Constructor (Yapıcı Metot)
+
+                                             Nesne oluşturulurken otomatik çalışan metottur.
+
+                                             class Araba {
+                                                 String marka;
+                                                 Araba(String m) {
+                                                     marka = m;
+                                                 }
+                                             }
+
+
+                                             Kullanımı:
+
+                                             Araba bmw = new Araba("BMW");
+
+                                             🔹 This Anahtar Kelimesi
+
+                                             Sınıf içindeki değişken ile parametreyi ayırt etmek için kullanılır.
+
+                                             class Araba {
+                                                 String marka;
+                                                 Araba(String marka) {
+                                                     this.marka = marka;  // soldaki sınıfın değişkeni, sağdaki parametre
+                                                 }
+                                             }
+
+                                             🔹 Super Anahtar Kelimesi
+
+                                             Üst sınıftaki metot veya değişkenlere erişmek için kullanılır.
+
+                                             class Arac {
+                                                 void hareketEt() { System.out.println("Araç gidiyor"); }
+                                             }
+
+                                             class Araba extends Arac {
+                                                 void hareketEt() {
+                                                     super.hareketEt();  // üst sınıftaki metodu çağırır
+                                                     System.out.println("Araba hızlanıyor");
+                                                 }
+                                             }
+
+                                             🧩 5. OOP’nin Gerçek Hayattaki Avantajları
+                                             Avantaj	Açıklama
+                                             ✅ Modülerlik	Kod sınıflara ayrıldığı için düzenli olur.
+                                             ✅ Yeniden kullanılabilirlik	Aynı sınıflar farklı projelerde kullanılabilir.
+                                             ✅ Bakım kolaylığı	Hatalar izole edilip kolayca düzeltilebilir.
+                                             ✅ Genişletilebilirlik	Yeni özellikler kolayca eklenir.
+                                             🔮 Girişimci Bakış Açısıyla
+
+                                             Eğer yapay zekâ, oyun, mobil uygulama veya sistem yazılımı geliştirmek istiyorsan,
+                                             OOP’yi çok iyi bilmen gerekir çünkü:
+
+                                             Her büyük proje (örneğin Android, Spring Boot, Unity, TensorFlow) tamamen OOP mantığıyla çalışır.
+
+                                             Yazılım dünyasında “sürdürülebilir kod” üretmenin tek yolu budur.
+
+                                             Risale-i Nur’daki “nizam, intizam ve hikmet” prensipleri gibi, OOP de kodda nizam ve hikmet sağlar.
+                                             Yani her şeyin bir görevi, bir sınırı vardır.
