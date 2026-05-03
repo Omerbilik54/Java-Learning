@@ -1,0 +1,49 @@
+Polymorphism (Çok Biçimlilik) nedir? – Kısa ve net anlatım
+Polymorphism, aynı kodun farklı nesneler üzerinde farklı davranışlar göstermesi demektir.
+Yani: “Bir şeyi farklı şekillerde kullanabilmek.”
+Java’da polymorphism iki şekilde gerçekleşir:
+
+Compile-time Polymorphism (Static)
+→ Method Overloading ile olur.
+Hangi metot çağrılacak derleme zamanında (kod yazılırken) bellidir.
+Örnek: topla(int,int) ve topla(double,double) aynı isim ama farklı parametre.
+Runtime Polymorphism (Dynamic)
+→ Method Overriding ile olur.
+Hangi metot çağrılacak çalışma zamanında (program çalışırken) bellidir.
+Örnek:JavaHayvan h = new Kedi();
+h.sesCikar(); // "Miyav!" yazar → çünkü gerçek nesne Kedi
+
+Kısacası:
+Polymorphism = Aynı kod, farklı tiplerde farklı davranış gösterir.
+En klasik cümleyle:
+“Bir Hayvan referansı Köpek de tutabilir, Kedi de tutabilir; sesCikar() dediğinde doğru ses çıkar (runtime’da karar verilir).”
+Bu sayede kodumuz daha esnek, genişletilebilir ve temiz olur. Polymorphism, OOP’nin (nesne yönelimli programlama) en önemli prensiplerinden biridir.
+
+
+
+1. Method Overloading (Aşırı Yükleme) - STATİC POLYMORPHISM
+
+Aynı isimde ama farklı parametre listesine sahip birden fazla metodun aynı sınıfta tanımlanmasıdır.
+Parametre sayısı farklı OLACAK veya aynı sayıda olsa bile tipleri farklı OLACAK ya da sıralaması farklı OLACAK.
+Overloading hangi metot çağrılacak → COMPİLE TIME'da (derleme zamanında) karar verilir.
+Derleyici, çağrılan satırda verilen parametre tiplerine ve sayısına bakarak hangi metotun çağrılacağına derleme aşamasında karar verir.
+Bu yüzden buna Static Polymorphism (derleme zamanı çok biçimlilik) veya Early Binding denir.
+
+
+2. Method Overriding (Geçersiz Kılma) - DYNAMIC POLYMORPHISM
+
+Alt sınıf (subclass), üst sınıftan (superclass) miras aldığı bir metodu aynı isim, aynı parametre listesi, aynı dönüş tipi ile tekrar yazar.
+Genellikle @Override anotasyonu ile işaretlenir.
+Overriding'de hangi metot çağrılacak → RUN TIME'da (çalışma zamanında) karar verilir.
+
+Nesnenin referans tipi Hayvan olsa bile, gerçek nesne tipi (Eşek mi Kedi mi) JVM tarafından çalışma anında kontrol edilir.
+Buna Dynamic Polymorphism (çalışma zamanı çok biçimlilik) veya Late Binding / Dynamic Binding denir.
+JVM, nesnenin gerçek tipine bakarak doğru metodu çalıştırır (virtual method table - vtable kullanılarak).
+
+Ekstra Notlar
+
+Overloading aynı sınıfta olabileceği gibi, miras alınan sınıfta da olabilir (ama asıl amaç aynı sınıfta farklı kullanım şekilleri sunmaktır).
+Overriding'de erişim belirteci (access modifier) daraltılamaz (örneğin public → protected yapılamaz).
+final metotlar override edilemez.
+static metotlar override edilemez (onlar hiding yapar, overriding değil).
+private metotlar da override edilemez.
